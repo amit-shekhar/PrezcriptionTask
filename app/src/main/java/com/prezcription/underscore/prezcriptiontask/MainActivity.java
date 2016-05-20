@@ -38,7 +38,10 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        fragment = new ReminderTask(this);
+
+        ReminderTask task = new ReminderTask();
+        task.setContext(this);
+        fragment = task;
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.frame_container, fragment).commit();
 
@@ -64,11 +67,23 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
         fragment = null;
         if (id == R.id.reminder_task) {
-            fragment = new ReminderTask(this);
+            ReminderTask task = new ReminderTask();
+            task.setContext(this);
+            fragment = task;
+
+
         } else if (id == R.id.image_task) {
-            fragment = new ImageTask(this);
+            ImageTask task = new ImageTask();
+            task.setContext(this);
+            fragment = task;
+
+
         } else if (id == R.id.recycler_task) {
-            fragment = new RecyclerTask(this);
+            RecyclerTask task = new RecyclerTask();
+            task.setContext(this);
+            fragment = task;
+
+
         }
 
         if(fragment != null){

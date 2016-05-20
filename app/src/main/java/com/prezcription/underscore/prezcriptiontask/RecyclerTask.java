@@ -21,7 +21,7 @@ public class RecyclerTask extends Fragment {
     private RecyclerView recyclerView;
     private RecyclerMessageAdapter adapter;
 
-    public RecyclerTask(Context context){
+    public void setContext(Context context){
         this.context = context;
     }
 

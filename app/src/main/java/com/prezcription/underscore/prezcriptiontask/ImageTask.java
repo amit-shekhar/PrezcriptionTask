@@ -32,9 +32,11 @@ public class ImageTask extends Fragment implements View.OnClickListener {
     };
     private int count = 0;
 
-    public ImageTask(Context context){
+
+    public void setContext(Context context){
         this.context = context;
     }
+
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.image_main,container,false);

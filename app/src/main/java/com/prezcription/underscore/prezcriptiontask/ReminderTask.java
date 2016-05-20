@@ -49,9 +49,10 @@ public class ReminderTask extends Fragment implements View.OnClickListener {
     SharedPreferences.Editor editor;
 
 
-    public ReminderTask(Context context){
+    public void setContext(Context context){
         this.context = context;
     }
+
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.reminder_main,container,false);
@@ -119,7 +120,7 @@ public class ReminderTask extends Fragment implements View.OnClickListener {
                 if(isAlarmSet == false){
 
                     calendar.set(Calendar.YEAR, year);
-                    calendar.set(Calendar.MONTH,month+1);
+                    calendar.set(Calendar.MONTH,month);
                     calendar.set(Calendar.DAY_OF_MONTH,day);
                     calendar.set(Calendar.HOUR_OF_DAY,hour);
                     calendar.set(Calendar.MINUTE,min);
@@ -165,7 +166,8 @@ public class ReminderTask extends Fragment implements View.OnClickListener {
         StringBuilder sb = new StringBuilder();
         Date d = calendar.getTime();
         sb.append(d.getDate()).append("/").append(d.getMonth()).append("/").append(d.getYear()%100)
-                .append("\n").append(d.getHours()).append(" : ").append(d.getMinutes());
+                .append("\n").append(d.getHours() < 10 ? "0"+d.getHours() : d.getHours()).append(" : ")
+                .append(d.getMinutes() < 10 ? "0"+d.getMinutes() : d.getMinutes());
 
         return sb.toString();
     }
