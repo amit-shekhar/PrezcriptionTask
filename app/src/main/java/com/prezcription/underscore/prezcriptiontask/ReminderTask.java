@@ -31,12 +31,15 @@ public class ReminderTask extends Fragment implements View.OnClickListener {
     private Context context;
 
     private EditText etMsg;
-    private TextView tvDate,tvTime,tvDateSet,tvTimeSet;
+    private TextView tvDate;
+    private TextView tvTime;
+    private static TextView tvDateSet;
+    private static TextView tvTimeSet;
     private Button bSet;
     private RelativeLayout rlRemNo;
     private TextView tvRemYes;
 
-    private int year, month, day,hour,min;
+    private static int year, month, day,hour,min;
     private Calendar calendar;
     private AlarmManager alarmManager;
     private boolean isAlarmSet;
@@ -173,12 +176,12 @@ public class ReminderTask extends Fragment implements View.OnClickListener {
     }
 
 
-    private void showDate(int year, int month, int day) {
+    private static void showDate(int year, int month, int day) {
         tvDateSet.setText(new StringBuilder().append(day).append("/")
                 .append(month).append("/").append(year));
     }
 
-    private void showTime(int hourOfDay, int minute) {
+    private static void showTime(int hourOfDay, int minute) {
         StringBuilder sb = new StringBuilder();
         if(hourOfDay%12 < 10){
             sb.append(0);
@@ -197,7 +200,7 @@ public class ReminderTask extends Fragment implements View.OnClickListener {
         tvTimeSet.setText(sb.toString());
     }
 
-    public class SelectDate extends DialogFragment implements DatePickerDialog.OnDateSetListener {
+    public static class SelectDate extends DialogFragment implements DatePickerDialog.OnDateSetListener {
 
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -212,7 +215,7 @@ public class ReminderTask extends Fragment implements View.OnClickListener {
         }
 
     }
-        public class SelectTime extends DialogFragment implements TimePickerDialog.OnTimeSetListener {
+        public static class SelectTime extends DialogFragment implements TimePickerDialog.OnTimeSetListener {
 
             @Override
             public Dialog onCreateDialog(Bundle savedInstanceState) {
